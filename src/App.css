@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#board {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.cell {
+  height: 8vh;
+  width: 7vw;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cell:nth-child(3n) {
+  border-right: none;
+}
+.cell:nth-child(3n+1) {
+  border-left: none;
+}
+
+.cell:first-child,
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:last-child,
+.cell:nth-child(8),
+.cell:nth-child(7) {
+  border-bottom: none;
+}
+
+.x::after {
+  content: "";
+  background-color: #000;
+  width: 65%;
+  height: 15%;
+  transform: rotate(45deg);
+  position: absolute;
+}
+
+.x::before {
+  content: "";
+  background-color: #000;
+  width: 65%;
+  height: 15%;
+  transform: rotate(-45deg);
+  position: absolute;
+}
+
+.circle::after, .circle::before {
+  content: "";
+  border-radius: 50%;
+  position: absolute;
+}
+
+.circle::after {
+  content: "";
+  border-radius: 50%;
+  width: 42%;
+  height: 63%;
+  position: absolute;
+  background-color: #fff;
+}
+
+.circle::before {
+  content: "";
+  background-color: #000;
+  width: 60%;
+  height: 90%;
+  position: absolute;
+}
+
+.empty:hover {
+  background-color: lightcoral;
+  opacity: 0.15;
+  cursor: pointer;
+}
