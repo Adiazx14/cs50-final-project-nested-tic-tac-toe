@@ -1,6 +1,6 @@
 import { useState } from "react"
 
-const Board = () => {
+const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie}) => {
     
     const [matrix, setMatrix] = useState([[0, 0, 0],
                                          [0, 0, 0],
@@ -15,14 +15,22 @@ const Board = () => {
             setMatrix(newMatrix)
             setTurn(!turn)
             if (checkWinner())
-            {
-                alert(`The winner is ${turn?"X":"Circle"}`)
-                restart()
+            {   
+                newMatrix = [...mainMatrix]
+                newMatrix[index[0]][index[1]] = turn?1:-1
+                changeMatrix(newMatrix)
+                if (checkMainWinner()) {
+                    console.log(`Gano ${turn?"X":"Circle"}`)
+                }
+                if (checkMainTie()) {
+                    console.log("General Tie")
+                }
+                
+                alert(`Point for ${turn?"X":"Circle"}`)
             }
             if (checkTie())
             {
                 alert("Tie")
-                restart()
             }
         }
     }

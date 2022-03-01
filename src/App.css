@@ -93,3 +93,9 @@
   opacity: 0.15;
   cursor: pointer;
 }
+
+main {
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  gap: 6vh;
+}
