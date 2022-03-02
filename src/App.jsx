@@ -6,7 +6,8 @@ function App() {
   const [matrix, setMatrix] = useState([[0, 0, 0],
     [0, 0, 0],
     [0, 0,  0]])
-
+  const [turn, setTurn] = useState(true)
+  
   const checkWinner = () => {
        
   if ((matrix[0][0] !== 0) && ((matrix[0][0] === matrix[0][1] && matrix[0][0] === matrix[0][2]) || (matrix[0][0] === matrix[1][0] && matrix[0][0] === matrix[2][0]) || (matrix[0][0] === matrix[1][1] && matrix[0][0] === matrix[2][2]))) {
@@ -51,7 +52,7 @@ function App() {
       <header className="App-header">
       </header>
       <main>
-        {matrix.map((level, row)=>level.map((cell, column)=><Board checkMainTie={checkTie} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMatrix={setMatrix} key={row*3+column}/>))}
+        {matrix.map((level, row)=>level.map((cell, column)=><Board turn={turn} setTurn={setTurn} checkMainTie={checkTie} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMatrix={setMatrix} key={row*3+column}/>))}
       </main>
     </div>
   );

@@ -1,12 +1,10 @@
 import { useState } from "react"
 
-const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie}) => {
+const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie, turn, setTurn}) => {
     
     const [matrix, setMatrix] = useState([[0, 0, 0],
                                          [0, 0, 0],
                                          [0, 0,  0]])
-
-    const [turn, setTurn] = useState(true)
 
     const move = (row, column) => {
         var newMatrix = [...matrix]
@@ -26,12 +24,8 @@ const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie})
                     console.log("General Tie")
                 }
                 
-                alert(`Point for ${turn?"X":"Circle"}`)
             }
-            if (checkTie())
-            {
-                alert("Tie")
-            }
+           
         }
     }
 
@@ -79,7 +73,7 @@ const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie})
                   [0, 0,  0]])
     }
     return (
-        <div id="board">
+        <div className={`board ${mainMatrix[index[0]][index[1]] === 0?"": mainMatrix[index[0]][index[1]] === 1?"main-x":"main-circle"}`}>
             {matrix.map((level, row)=>level.map((cell, column)=><div onClick={()=>move(row, column)} key={row*3+column} className={`cell ${matrix[row][column]===0?"empty":matrix[row][column]===1?"x":"circle"}`}></div>))}
         </div>
     )
