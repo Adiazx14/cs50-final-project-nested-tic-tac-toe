@@ -26,7 +26,7 @@ function App() {
   if (matrix[2][0] !== 0 && (matrix[2][0] === matrix[2][1] && matrix[2][0] === matrix[2][2])) {
     return true
   }
-  return false
+  return 0
   }
 
     const checkTie = () => {
@@ -51,7 +51,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       </header>
-      <main>
+      <main className='ltor-corner'>
         {matrix.map((level, row)=>level.map((cell, column)=><Board turn={turn} setTurn={setTurn} checkMainTie={checkTie} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMatrix={setMatrix} key={row*3+column}/>))}
       </main>
     </div>

@@ -100,8 +100,42 @@ main {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 6vh;
+  position: relative;
 }
 
+.ltor-corner::after {
+  content: "";
+  background-color: #000;
+  width: 0%;
+  height: 1%;
+  top: 50%;
+  left: -9.5%;
+  transform: rotate(38.5deg);
+  position: absolute;
+  animation: left-corner-to-right-corner 2s forwards;
+}
+
+@keyframes left-corner-to-right-corner {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 120%;
+  }
+}
+
+/* main::before {
+  content: "";
+  background-color: #000;
+  width: 120%;
+  height: 1%;
+  top: 50%;
+  left: -11%;
+  transform: rotate(-38.5deg);
+  position: absolute;
+  animation: left-corner-to-right-corner 2s forwards;
+}
+ */
 .main-x .cell, .main-circle .cell{
   visibility: hidden;
 }
