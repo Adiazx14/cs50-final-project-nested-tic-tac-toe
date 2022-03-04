@@ -103,39 +103,6 @@ main {
   position: relative;
 }
 
-.ltor-corner::after {
-  content: "";
-  background-color: #000;
-  width: 0%;
-  height: 1%;
-  top: 50%;
-  left: -9.5%;
-  transform: rotate(38.5deg);
-  position: absolute;
-  animation: left-corner-to-right-corner 2s forwards;
-}
-
-@keyframes left-corner-to-right-corner {
-  from {
-    width: 0%;
-  }
-  to {
-    width: 120%;
-  }
-}
-
-/* main::before {
-  content: "";
-  background-color: #000;
-  width: 120%;
-  height: 1%;
-  top: 50%;
-  left: -11%;
-  transform: rotate(-38.5deg);
-  position: absolute;
-  animation: left-corner-to-right-corner 2s forwards;
-}
- */
 .main-x .cell, .main-circle .cell{
   visibility: hidden;
 }
@@ -210,3 +177,98 @@ main {
     width: 42%;
   }
 }
+
+/* Global winning animations */
+
+.ltor-corner::after, .rtol-corner::after {
+  content: "";
+  background-color: #dc143c;
+  width: 0%;
+  height: 2%;
+  top: 50%;
+  left: -9.5%;
+  transform: rotate(38.5deg);
+  position: absolute;
+  animation: diagonal 2s 0.6s forwards;
+}
+
+.rtol-corner::after {
+  top: 49%;
+  left: -9.5%;
+  transform: rotate(-39deg);
+}
+
+@keyframes diagonal {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 120%;
+  }
+}
+
+.ltor-top::after, .ltor-middle::after, .ltor-bottom::after {
+  content: "";
+  background-color: #dc143c;
+  width: 0%;
+  height: 2%;
+  top: 13.5%;
+  left: -3%;
+  position: absolute;
+  animation: horizontal 2s 0.6s forwards;
+}
+
+@keyframes horizontal {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 105%;
+  }
+}
+
+.ltor-middle::after {
+  top: 49%;
+}
+
+.ltor-bottom::after {
+  top: 85%;
+}
+
+.ttob-left::after, .ttob-middle::after, .ttob-right::after {
+  content: "";
+  background-color: #dc143c;
+  width: 80%;
+  height: 2%;
+  top:-50%;
+  left: -25.3%;
+  position: absolute;
+  animation: vertical 2s forwards;
+  transform: rotate(90deg);
+}
+
+@keyframes vertical {
+  from {
+    top:-50%;
+  }
+  to {
+    top: 49%;
+  }
+}
+
+
+.ttob-middle::after {
+  left: 10%;
+}
+
+.ttob-right::after {
+  left: 45.5%;
+}
+
+
+
+
+
+
+
+
