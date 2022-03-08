@@ -1,14 +1,26 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 
-const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie, turn, setTurn}) => {
+const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setTurn, winner, changeWinner, setOverlay, setMenu, reset}) => {
+
+    const firstUpdate = useRef(true)
     
+    useEffect(()=>{
+        if (!firstUpdate.current){
+        setTimeout(()=>{setMatrix([[0, 0, 0],
+                  [0, 0, 0],
+                  [0, 0,  0]])}, 1500)
+        }
+        else {
+            firstUpdate.current = false
+        }
+    }, [reset])
     const [matrix, setMatrix] = useState([[0, 0, 0],
                                          [0, 0, 0],
                                          [0, 0,  0]])
 
     const move = (row, column) => {
         var newMatrix = [...matrix]
-        if (matrix[row][column] === 0){
+        if (matrix[row][column] === 0 && winner===0){
             newMatrix[row][column]=turn?1:-1
             setMatrix(newMatrix)
             setTurn(!turn)
@@ -16,12 +28,12 @@ const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie, 
             {   
                 newMatrix = [...mainMatrix]
                 newMatrix[index[0]][index[1]] = turn?1:-1
-                changeMatrix(newMatrix)
+                changeMainMatrix(newMatrix)
                 if (checkMainWinner()) {
                     console.log(`Gano ${turn?"X":"Circle"}`)
-                }
-                if (checkMainTie()) {
-                    console.log("General Tie")
+                    changeWinner(turn?1:-1)
+                    setTimeout(()=>setOverlay("overlay active"), 1500)
+                    setTimeout(()=>setMenu("menu menu-active"), 2500)
                 }
                 
             }
@@ -54,27 +66,9 @@ const Board = ({mainMatrix, changeMatrix, index, checkMainWinner, checkMainTie, 
         return false
     }
 
-    const checkTie = () => {
-        var tie = true
-        for (let i = 0; i < 3; i++){
-            for (let j = 0; j < 3; j++){
-                if (matrix[i][j] === 0) {
-                    return false
-                }
-            }
-        }
-        return tie
-    }
-
-    const restart = () => {
-
-        setMatrix([[0, 0, 0],
-                  [0, 0, 0],
-                  [0, 0,  0]])
-    }
     return (
         <div className={`board ${mainMatrix[index[0]][index[1]] === 0?"": mainMatrix[index[0]][index[1]] === 1?"main-x":"main-circle"}`}>
-            {matrix.map((level, row)=>level.map((cell, column)=><div onClick={()=>move(row, column)} key={row*3+column} className={`cell ${matrix[row][column]===0?"empty":matrix[row][column]===1?"x":"circle"}`}></div>))}
+            {matrix.map((level, row)=>level.map((cell, column)=><div onClick={()=>move(row, column)} key={row*3+column} className={`cell ${reset?"cell-reset":""} ${matrix[row][column]===0?"empty":matrix[row][column]===1?"x":"circle"}`}></div>))}
         </div>
     )
 }

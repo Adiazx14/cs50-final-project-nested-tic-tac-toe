@@ -9,66 +9,81 @@ function App() {
   const [turn, setTurn] = useState(true)
   
   const [mainClass, setMainClass] = useState("")
+  const [winner, setWinner] = useState(0)
+  const [overlay, setOverlay] = useState("overlay")
+  const [menu, setMenu] = useState("menu")
+  const [reset, setReset] = useState(false)
   
- 
   const checkWinner = () => {
        
   if (matrix[0][0] !== 0) {
     if (matrix[0][0] === matrix[0][1] && matrix[0][0] === matrix[0][2]) {
       setMainClass("ltor-top")
-    } 
+      return true 
+    }
+
     if (matrix[0][0] === matrix[1][0] && matrix[0][0] === matrix[2][0]) {
       setMainClass("ttob-left")
-    } 
+      return true
+    }
+
     if (matrix[0][0] === matrix[1][1] && matrix[0][0] === matrix[2][2]) {
       setMainClass("ltor-corner")
+      return true
     }
   }
   if ((matrix[0][1] !== 0) && (matrix[0][1] === matrix[1][1] && matrix[0][1] === matrix[2][1])){
     setMainClass("ttob-middle")
+    return true
   }
   if (matrix[0][2] !== 0) {
     if (matrix[0][2] === matrix[1][2] && matrix[0][2] === matrix[2][2]) {
       setMainClass("ttob-right")
+      return true
+
     }
     if (matrix[0][2] === matrix[1][1] && matrix[0][2] === matrix[2][0]) {
       setMainClass("rtol-corner")
-  }
+      return true
+
+    }
   }
   if (matrix[1][0] !== 0 && (matrix[1][0] === matrix[1][1] && matrix[1][0] === matrix[1][2])) {
     setMainClass("ltor-middle")
+    return true
   }
   if (matrix[2][0] !== 0 && (matrix[2][0] === matrix[2][1] && matrix[2][0] === matrix[2][2])) {
     setMainClass("ltor-bottom")
+    return true
   }
-  return 0
+  return false
   }
 
-    const checkTie = () => {
-        var tie = true
-        for (let i = 0; i < 3; i++){
-            for (let j = 0; j < 3; j++){
-                if (matrix[i][j] === 0) {
-                    return false
-                }
-            }
-        }
-        return tie
-    }
+  const restart = ()=> {
+    setMenu("menu")
+    setTimeout(()=>setOverlay("overlay"),1000)
+    setWinner(0)
+    setTimeout(()=>setReset(true),1000)
+    setTimeout(()=>setReset(false), 2500)
+    setTimeout(()=>{setMatrix([[0, 0, 0],
+      [0, 0, 0],
+      [0, 0,  0]])})
+    setMainClass("")
+  }
 
-    const restart = () => {
-
-        setMatrix([[0, 0, 0],
-                  [0, 0, 0],
-                  [0, 0,  0]])
-    }
+ 
   return (
     <div className="App">
-      <header className="App-header">
-      </header>
       <main className={mainClass}>
-        {matrix.map((level, row)=>level.map((cell, column)=><Board turn={turn} setTurn={setTurn} checkMainTie={checkTie} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMatrix={setMatrix} key={row*3+column}/>))}
+        {matrix.map((level, row)=>level.map((cell, column)=><Board reset={reset} setMenu={setMenu} setOverlay={setOverlay} changeWinner={setWinner} winner={winner} turn={turn} setTurn={setTurn} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMainMatrix={setMatrix} key={row*3+column}/>))}
       </main>
+      <div className={menu}>
+        <h2>{winner===1?"X":"Circle"} won!</h2>
+        <p>Do you want to play again?</p>
+        <button onClick={()=>{restart()}}>Yes</button>
+      </div>
+      <div className={overlay}></div>
+
     </div>
   );
 }
