@@ -6,9 +6,9 @@ const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setT
     
     useEffect(()=>{
         if (!firstUpdate.current){
-        setTimeout(()=>{setMatrix([[0, 0, 0],
+        setMatrix([[0, 0, 0],
                   [0, 0, 0],
-                  [0, 0,  0]])}, 1500)
+                  [0, 0,  0]])
         }
         else {
             firstUpdate.current = false

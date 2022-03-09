@@ -62,7 +62,7 @@ function App() {
   const restart = ()=> {
     setMenu("menu")
     setTimeout(()=>setOverlay("overlay"),1000)
-    setWinner(0)
+    setTimeout(()=>setWinner(0), 1500)
     setTimeout(()=>setReset(true),1000)
     setTimeout(()=>setReset(false), 2500)
     setTimeout(()=>{setMatrix([[0, 0, 0],
