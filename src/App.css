@@ -4,11 +4,20 @@
   box-sizing: border-box;
 }
 
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+img {
+  width: 3%;
+}
+
 body {
   overflow: hidden;
 }
 
-.App {
+main {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -105,7 +114,7 @@ body {
   cursor: pointer;
 }
 
-main {
+#main-board {
   display: grid;
   grid-template-columns: repeat(3, auto);
   gap: 6vh;
@@ -331,4 +340,8 @@ button:hover {
   to {
     opacity: 0.8;
   }
+}
+
+img {
+  display: block;
 }

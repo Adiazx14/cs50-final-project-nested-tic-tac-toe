@@ -59,31 +59,38 @@ function App() {
   return false
   }
 
-  const restart = ()=> {
+  const restartAfterWin = ()=> {
     setMenu("menu")
     setTimeout(()=>setOverlay("overlay"),1000)
     setTimeout(()=>setWinner(0), 1500)
     setTimeout(()=>setReset(true),1000)
     setTimeout(()=>setReset(false), 2500)
-    setTimeout(()=>{setMatrix([[0, 0, 0],
+    setTimeout(()=>{
+      setMatrix([[0, 0, 0],
       [0, 0, 0],
-      [0, 0,  0]])})
-    setMainClass("")
+      [0, 0,  0]])
+      setMainClass("")
+    }, 1000)
   }
 
+  const restart = () => {
+    
+  }
  
   return (
     <div className="App">
-      <main className={mainClass}>
-        {matrix.map((level, row)=>level.map((cell, column)=><Board reset={reset} setMenu={setMenu} setOverlay={setOverlay} changeWinner={setWinner} winner={winner} turn={turn} setTurn={setTurn} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMainMatrix={setMatrix} key={row*3+column}/>))}
+      <img src="restart.svg" alt="" />
+      <main>
+        <div id="main-board" className={mainClass}>
+          {matrix.map((level, row)=>level.map((cell, column)=><Board reset={reset} setMenu={setMenu} setOverlay={setOverlay} changeWinner={setWinner} winner={winner} turn={turn} setTurn={setTurn} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMainMatrix={setMatrix} key={row*3+column}/>))}
+        </div>
+        <div className={menu}>
+          <h2>{winner===1?"X":"Circle"} won!</h2>
+          <p>Do you want to play again?</p>
+          <button onClick={()=>{restartAfterWin()}}>Yes</button>
+        </div>
+        <div className={overlay}></div>
       </main>
-      <div className={menu}>
-        <h2>{winner===1?"X":"Circle"} won!</h2>
-        <p>Do you want to play again?</p>
-        <button onClick={()=>{restart()}}>Yes</button>
-      </div>
-      <div className={overlay}></div>
-
     </div>
   );
 }
