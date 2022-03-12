@@ -41,7 +41,7 @@ main {
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
   position: relative;
-  
+  padding: 6.5%;
 }
 
 .cell{
@@ -80,6 +80,52 @@ main {
 .cell:nth-child(7) {
   border-bottom: none;
 }
+
+.board:nth-child(3n), .board:nth-child(3n-1) {
+  border-left: #000 4px solid;
+}
+
+.board:last-child, .board:nth-child(8), .board:nth-child(7), .board:nth-child(6), .board:nth-child(5), .board:nth-child(4) {
+  border-top: #000 4px solid;
+}
+
+.board:nth-child(3n) .cell{
+  margin-left: 20%;
+}
+
+.board:nth-child(3n-1) .cell:nth-child(3n+1) {
+  margin-left: 20%;
+  border-right: none;
+}
+
+
+.board:nth-child(3n-1) .cell:nth-child(3n-1) {
+  margin-left: 10%;
+  border-right: none;
+  border-left: none;
+}
+
+.board:nth-child(3n-1) .cell:nth-child(3n) {
+  border-right: none;
+  border-left: 2px solid;
+}
+
+
+.board:nth-child(3n-1) .cell:nth-child(3n-1) {
+  border-left: 2px solid;
+}
+
+
+.board:nth-child(3n-1) {
+  padding-right: 15%;
+}
+
+
+
+.board:nth-child(3n+1) {
+  padding-right: 20%;
+}
+
 
 .x::after {
   content: "";
@@ -131,7 +177,6 @@ main {
 #main-board {
   display: grid;
   grid-template-columns: repeat(3, auto);
-  gap: 6vh;
   position: relative;
 }
 
@@ -270,10 +315,10 @@ main {
 .ttob-left::after, .ttob-middle::after, .ttob-right::after {
   content: "";
   background-color: #dc143c;
-  width: 80%;
+  width: 89%;
   height: 2%;
   top:-50%;
-  left: -25.3%;
+  left: -28%;
   position: absolute;
   animation: vertical 2s forwards;
   transform: rotate(90deg);
@@ -290,11 +335,13 @@ main {
 
 
 .ttob-middle::after {
-  left: 10%;
+  left: 4.3%;
+  width: 90%;
 }
 
 .ttob-right::after {
-  left: 45.5%;
+  left: 39.5%;
+  width: 88%;
 }
 
 /* Menu */
