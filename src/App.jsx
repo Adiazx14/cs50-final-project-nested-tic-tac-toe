@@ -74,12 +74,21 @@ function App() {
   }
 
   const restart = () => {
-    
+
+    setTimeout(()=>setWinner(0), 1500)
+    setReset(true)
+    setTimeout(()=>setReset(false), 500)
+    setMatrix([[0, 0, 0],
+      [0, 0, 0],
+      [0, 0,  0]])
+      setMainClass("")
   }
  
   return (
     <div className="App">
-      <img src="restart.svg" alt="" />
+      <div className="img-div">
+        <img onClick={()=>restart()} src="restart.svg" alt="" />
+      </div>
       <main>
         <div id="main-board" className={mainClass}>
           {matrix.map((level, row)=>level.map((cell, column)=><Board reset={reset} setMenu={setMenu} setOverlay={setOverlay} changeWinner={setWinner} winner={winner} turn={turn} setTurn={setTurn} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMainMatrix={setMatrix} key={row*3+column}/>))}

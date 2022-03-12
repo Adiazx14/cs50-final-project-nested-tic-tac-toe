@@ -5,12 +5,21 @@
 }
 
 .App {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
 }
 img {
-  width: 3%;
+  width: 6%;
+  margin-right: 5vw;
+  align-self: end;
+  position: absolute;
+  left: 2.5%;
+  top: 45%;
+  cursor: pointer;
+
+}
+
+.img-div {
+  text-align: center;
+
 }
 
 body {
@@ -18,10 +27,12 @@ body {
 }
 
 main {
-  height: 100vh;
   display: flex;
-  justify-content: center;
+  justify-self: center;
   align-items: center;
+  justify-content: center;
+  height: 100vh;
+
 }
 
 .board {
@@ -33,7 +44,7 @@ main {
   
 }
 
-.cell {
+.cell{
   height: 6rem;
   width: 8rem;
   border: 1px solid black;
@@ -41,10 +52,13 @@ main {
   justify-content: center;
   align-items: center;
   position: relative;
-  transition: opacity 1s;
 }
 
-.cell-reset {
+.cell::after, .cell::before {
+  transition: opacity 0.5s;
+}
+
+.cell-reset::before, .cell-reset::after {
   opacity: 0;
 }
 
@@ -340,8 +354,4 @@ button:hover {
   to {
     opacity: 0.8;
   }
-}
-
-img {
-  display: block;
 }
