@@ -13,7 +13,7 @@ function App() {
   const [overlay, setOverlay] = useState("overlay")
   const [menu, setMenu] = useState("menu")
   const [reset, setReset] = useState(false)
-  
+
   const checkWinner = () => {
        
   if (matrix[0][0] !== 0) {

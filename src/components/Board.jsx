@@ -2,21 +2,32 @@ import { useEffect, useRef, useState } from "react"
 
 const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setTurn, winner, changeWinner, setOverlay, setMenu, reset}) => {
 
+    const [matrix, setMatrix] = useState([[0, 0, 0],
+        [0, 0, 0],
+        [0, 0,  0]])
     const firstUpdate = useRef(true)
+    const [restarting, setRestarting] = useState(false)
     
     useEffect(()=>{
         if (!firstUpdate.current){
-        setTimeout(()=>setMatrix([[0, 0, 0],
-                  [0, 0, 0],
-                  [0, 0,  0]]), 500)
+            restart()
         }
         else {
             firstUpdate.current = false
         }
     }, [reset])
-    const [matrix, setMatrix] = useState([[0, 0, 0],
-                                         [0, 0, 0],
-                                         [0, 0,  0]])
+
+    useEffect(()=>{
+        for (let i = 0; i < 3; i++) {
+          for (let k = 0; k < 3; k++) {
+            if (matrix[i][k] === 0) {
+                return
+            }
+          }
+        }
+        setRestarting(true)
+        restart()
+    },[matrix])
 
     const move = (row, column) => {
         var newMatrix = [...matrix]
@@ -66,9 +77,15 @@ const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setT
         return false
     }
 
+    const restart = () => {
+        setTimeout(()=>setMatrix([[0, 0, 0],
+            [0, 0, 0],
+            [0, 0,  0]]), 500)
+    }
+
     return (
         <div className={`board ${mainMatrix[index[0]][index[1]] === 0?"": mainMatrix[index[0]][index[1]] === 1?"main-x":"main-circle"}`}>
-            {matrix.map((level, row)=>level.map((cell, column)=><div onClick={()=>move(row, column)} key={row*3+column} className={`cell ${reset?"cell-reset":""} ${matrix[row][column]===0?"empty":matrix[row][column]===1?"x":"circle"}`}></div>))}
+            {matrix.map((level, row)=>level.map((cell, column)=><div onClick={()=>move(row, column)} key={row*3+column} className={`cell ${reset || restarting?"cell-reset":""} ${matrix[row][column]===0?"empty":matrix[row][column]===1?"x":"circle"}`}></div>))}
         </div>
     )
 }
