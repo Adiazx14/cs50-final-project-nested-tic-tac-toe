@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './App.css';
+import './media_queries.css'
 import Board from './components/Board';
 
 function App() {
@@ -86,8 +87,7 @@ function App() {
  
   return (
     <div className="App">
-      <div className="img-div">
-        <img onClick={()=>restart()} src="restart.svg" alt="" />
+      <div className="img-div" onClick={()=>{restart()}}>
       </div>
       <main>
         <div id="main-board" className={mainClass}>

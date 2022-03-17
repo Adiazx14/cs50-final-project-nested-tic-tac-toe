@@ -80,7 +80,7 @@ const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setT
     const restart = () => {
         setTimeout(()=>setMatrix([[0, 0, 0],
             [0, 0, 0],
-            [0, 0,  0]]), 500)
+            [0, 0,  0]]), 300)
     }
 
     return (
