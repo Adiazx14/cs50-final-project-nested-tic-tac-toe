@@ -5,7 +5,7 @@
         height: 8vh;
     }
     .cell {
-        height: 5.2rem;
+        height: 4.8rem;
     }
     .main-x::before, .main-x::after {
         left: 3.6rem;
@@ -73,9 +73,7 @@
         height: 4.6rem;
         width: 2.4rem;
     }
-    .main-x::before, .main-x::after {
-        left: 1.2rem;
-    }
+   
     .main-circle::after {
         left: 2.2rem;
         height: 24%;
@@ -87,6 +85,7 @@
     }
     .main-x::after, .main-x::before {
         height: 6%;
+        left: 1.1rem;
     }
     .circle::before{
         height: 47%;
@@ -98,13 +97,26 @@
         height: 9%;
         width: 75%;
     }
-    .ttob-left::after, .ttob-middle::after, .ttob-right::after {
+    .ttob-left::after, .ttob-middle::after, .ttob-right::after{
 
         width: 200%;
         left: -84%;
     }
-    .ltor-top::after, .ltor-middle::after, .ltor-bottom::after {
+    .ttob-middle::after {
+        left: -49%;
+    }
+    .ttob-right::after {
+        left: -15.4%;
+    }
+    .ltor-top::after {
         top:15.4%
+    }
+
+    .ltor-middle::after {
+        top:49%
+    }
+    .ltor-bottom::after {
+        top: 82.8%;
     }
 
     .menu {
@@ -128,10 +140,9 @@
     .main-circle::before {
         left: 1.3rem;
     }
-  
-    .ttob-left::after, .ttob-middle::after, .ttob-right::after {
+    
+ }
 
-        width: 200%;
-        left: -81%;
-    }
+ .menu {
+     display: none;
  }
