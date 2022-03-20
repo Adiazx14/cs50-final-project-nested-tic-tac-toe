@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/cs50-final-project-nested-tic-tac-toe/static/css/main.59b82c33.css",
-    "main.js": "/cs50-final-project-nested-tic-tac-toe/static/js/main.5a8844b1.js",
+    "main.css": "/cs50-final-project-nested-tic-tac-toe/static/css/main.a5f968fd.css",
+    "main.js": "/cs50-final-project-nested-tic-tac-toe/static/js/main.c12de613.js",
     "static/media/restart.svg": "/cs50-final-project-nested-tic-tac-toe/static/media/restart.995d2bb486d5320b5960.svg",
     "index.html": "/cs50-final-project-nested-tic-tac-toe/index.html",
-    "main.59b82c33.css.map": "/cs50-final-project-nested-tic-tac-toe/static/css/main.59b82c33.css.map",
-    "main.5a8844b1.js.map": "/cs50-final-project-nested-tic-tac-toe/static/js/main.5a8844b1.js.map"
+    "main.a5f968fd.css.map": "/cs50-final-project-nested-tic-tac-toe/static/css/main.a5f968fd.css.map",
+    "main.c12de613.js.map": "/cs50-final-project-nested-tic-tac-toe/static/js/main.c12de613.js.map"
   },
   "entrypoints": [
-    "static/css/main.59b82c33.css",
-    "static/js/main.5a8844b1.js"
+    "static/css/main.a5f968fd.css",
+    "static/js/main.c12de613.js"
   ]
 }
