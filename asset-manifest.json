@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/cs50-final-project-nested-tic-tac-toe/static/css/main.a5f968fd.css",
+    "main.css": "/cs50-final-project-nested-tic-tac-toe/static/css/main.e5bad531.css",
     "main.js": "/cs50-final-project-nested-tic-tac-toe/static/js/main.c12de613.js",
     "static/media/restart.svg": "/cs50-final-project-nested-tic-tac-toe/static/media/restart.995d2bb486d5320b5960.svg",
     "index.html": "/cs50-final-project-nested-tic-tac-toe/index.html",
-    "main.a5f968fd.css.map": "/cs50-final-project-nested-tic-tac-toe/static/css/main.a5f968fd.css.map",
+    "main.e5bad531.css.map": "/cs50-final-project-nested-tic-tac-toe/static/css/main.e5bad531.css.map",
     "main.c12de613.js.map": "/cs50-final-project-nested-tic-tac-toe/static/js/main.c12de613.js.map"
   },
   "entrypoints": [
-    "static/css/main.a5f968fd.css",
+    "static/css/main.e5bad531.css",
     "static/js/main.c12de613.js"
   ]
 }
