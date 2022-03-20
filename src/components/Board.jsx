@@ -27,6 +27,7 @@ const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setT
         }
         setRestarting(true)
         restart()
+        setTimeout(()=>setRestarting(false),300)
     },[matrix])
 
     const move = (row, column) => {

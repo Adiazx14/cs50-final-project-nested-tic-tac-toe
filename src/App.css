@@ -161,8 +161,8 @@ main {
 .circle::before {
   content: "";
   background-color: #000;
-  width: 60%;
-  height: 90%;
+  width: 64%;
+  height: 87%;
   position: absolute;
 }
 
@@ -217,7 +217,7 @@ main {
   content: "";
   border-radius: 50%;
   width: 0%;
-  height: 63%;
+  height: 54%;
   position: absolute;
   left: 6.5rem;
   background-color: #fff;
@@ -228,7 +228,7 @@ main {
   content: "";
   background-color: #000;
   width: 0%;
-  height: 90%;
+  height: 75%;
   position: absolute;
   animation: showOuterCircle 0.7s forwards;
 }
@@ -368,7 +368,7 @@ main {
 
 button {
   width: 80%;
-  height: 12%;
+  height: 18%;
   background-color: #f00;
   color: #000;
   font-size: 1.5rem;
@@ -384,7 +384,7 @@ button:hover {
   background-color: #000;
   opacity: 0;
   position: absolute;
-  height: 100%;
+  height: 120%;
   width: 100%;
   z-index: 1;
   display: none;

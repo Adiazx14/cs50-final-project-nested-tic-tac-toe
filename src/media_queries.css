@@ -4,11 +4,13 @@
         width: 10vw;
         height: 8vh;
     }
-
     .cell {
         height: 5.2rem;
     }
-
+    .main-x::before, .main-x::after {
+        left: 3.6rem;
+    }
+    
  }
 
  @media screen and (max-width:1440px) { 
@@ -18,57 +20,118 @@
         height: 3.7rem;
         width: 5.6rem;
     }
-
+    .main-circle::after {
+        left: 4.1rem;
+        
+    }
+    .main-circle::before {
+        left: 2.5rem;
+    }
+    .main-x::before, .main-x::after {
+        left: 2.7rem;
+    }
  }
-
 
  @media screen and (max-width:1024px) { 
 
-
     .cell {
-        height: 5.8rem;
+        height: 3.8rem;
         width: 5.6rem;
     }
-
+    .main-x::before, .main-x::after {
+        left: 2.4rem;
+    }
+    .main-circle::after {
+        left: 5.4rem;
+        
+    }
+    .main-circle::before {
+        left: 4rem;
+    }
  }
 
 
  @media screen and (max-width:820px) { 
 
-
     .cell {
         height: 6rem;
         width: 4.6rem;
     }
-
  }
 
  @media screen and (max-width:768px) { 
-
 
     .cell {
         height: 3.8rem;
         width: 4.6rem;
     }
-
  }
 
- @media screen and (max-width:425px) { 
-
+ @media screen and (max-width:428px) { 
 
     .cell {
         height: 4.6rem;
         width: 2.4rem;
     }
+    .main-x::before, .main-x::after {
+        left: 1.2rem;
+    }
+    .main-circle::after {
+        left: 2.2rem;
+        height: 24%;
+        
+    }
+    .main-circle::before {
+        left: 1.5rem;
+        height: 35%;
+    }
+    .main-x::after, .main-x::before {
+        height: 6%;
+    }
+    .circle::before{
+        height: 47%;
+    }
+    .circle::after {
+        height: 36%;
+    }
+    .x::before, .x::after {
+        height: 9%;
+        width: 75%;
+    }
+    .ttob-left::after, .ttob-middle::after, .ttob-right::after {
 
+        width: 200%;
+        left: -84%;
+    }
+    .ltor-top::after, .ltor-middle::after, .ltor-bottom::after {
+        top:15.4%
+    }
+
+    .menu {
+        height: 30%;
+        font-size: 1.4rem;
+        width: 75%;
+    }
  }
 
  @media screen and (max-width:400px) { 
-
 
     .cell {
         height: 3.5rem;
         width: 1.9rem;
     }
 
+    .main-circle::after {
+        left: 1.8rem;
+        
+    }
+    .main-circle::before {
+        left: 1.3rem;
+    }
+  
+    .ttob-left::after, .ttob-middle::after, .ttob-right::after {
+
+        width: 200%;
+        left: -81%;
+    }
  }
