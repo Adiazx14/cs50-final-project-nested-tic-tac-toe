@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react';
 import './App.css';
 import './media_queries.css'
 import Board from './components/Board';
+import io from "socket.io-client"
+
+const socket = io.connect("http://localhost:5000")
 
 function App() {
   const [matrix, setMatrix] = useState([[0, 0, 0],
@@ -15,6 +18,7 @@ function App() {
   const [menu, setMenu] = useState("menu")
   const [reset, setReset] = useState(false)
 
+ 
   const checkWinner = () => {
        
   if (matrix[0][0] !== 0) {
@@ -91,7 +95,7 @@ function App() {
       </div>
       <main>
         <div id="main-board" className={mainClass}>
-          {matrix.map((level, row)=>level.map((cell, column)=><Board reset={reset} setMenu={setMenu} setOverlay={setOverlay} changeWinner={setWinner} winner={winner} turn={turn} setTurn={setTurn} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMainMatrix={setMatrix} key={row*3+column}/>))}
+          {matrix.map((level, row)=>level.map((cell, column)=><Board socket={socket} reset={reset} setMenu={setMenu} setOverlay={setOverlay} changeWinner={setWinner} winner={winner} turn={turn} setTurn={setTurn} checkMainWinner={checkWinner} index={[row, column]} mainMatrix={matrix} changeMainMatrix={setMatrix} key={row*3+column}/>))}
         </div>
         <div className={menu}>
           <h2>{winner===1?"X":"Circle"} won!</h2>

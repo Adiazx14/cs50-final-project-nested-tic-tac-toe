@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 
-const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setTurn, winner, changeWinner, setOverlay, setMenu, reset}) => {
+const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setTurn, winner, changeWinner, setOverlay, setMenu, reset, socket}) => {
 
     const [matrix, setMatrix] = useState([[0, 0, 0],
         [0, 0, 0],
@@ -18,6 +18,22 @@ const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setT
     }, [reset])
 
     useEffect(()=>{
+        socket.on("receive_move", (matrix, board, currentTurn) => {
+          if (index[0] === board[0] && index[1] === board[1])  {
+          setMatrix(matrix)
+          setTurn(!currentTurn)
+        }})
+        socket.on("receive_global_move", (matrix, board) => {
+            if (index[0] === board[0] && index[1] === board[1])  {
+            changeMainMatrix(matrix)
+            }
+        })
+        socket.on("receive_win", () => {
+            win()
+        })
+      },[socket])
+      
+    useEffect(()=>{
         for (let i = 0; i < 3; i++) {
           for (let k = 0; k < 3; k++) {
             if (matrix[i][k] === 0) {
@@ -30,27 +46,36 @@ const Board = ({mainMatrix, changeMainMatrix, index, checkMainWinner, turn, setT
         setTimeout(()=>setRestarting(false),300)
     },[matrix])
 
-    const move = (row, column) => {
+    const move = async(row, column) => {
         var newMatrix = [...matrix]
         if (matrix[row][column] === 0 && winner===0){
             newMatrix[row][column]=turn?1:-1
             setMatrix(newMatrix)
+            console.log(index)
             setTurn(!turn)
+            await socket.emit("move", newMatrix, index, turn)
             if (checkWinner())
             {   
                 newMatrix = [...mainMatrix]
                 newMatrix[index[0]][index[1]] = turn?1:-1
+                await socket.emit("global_move", newMatrix, index)
                 changeMainMatrix(newMatrix)
                 if (checkMainWinner()) {
                     console.log(`Gano ${turn?"X":"Circle"}`)
-                    changeWinner(turn?1:-1)
-                    setTimeout(()=>setOverlay("overlay active"), 1500)
-                    setTimeout(()=>setMenu("menu menu-active"), 2500)
+                    await socket.emit("win")
+                    win()
                 }
                 
             }
            
         }
+    }
+
+    const win = () => {
+
+        changeWinner(turn?1:-1)
+        setTimeout(()=>setOverlay("overlay active"), 1500)
+        setTimeout(()=>setMenu("menu menu-active"), 2500)
     }
 
     const checkWinner = () => {
